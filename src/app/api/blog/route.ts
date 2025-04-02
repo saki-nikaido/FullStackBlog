@@ -8,12 +8,13 @@ export async function main() {
     try{
         await prisma.$connect();
     } catch(error){
-        return ("DB接続に失敗しました");
+        console.log("接続失敗", error)
+        return { message: "DB接続に失敗しました" };
     }
 }
 
 
-export async function GET (req: Request, res: NextResponse){
+export async function GET ( ){
     try {
         await main();
         const posts = await prisma.post.findMany();
@@ -27,7 +28,7 @@ export async function GET (req: Request, res: NextResponse){
       }
 };
 
-export async function POST (req: Request, res: NextResponse)  {
+export async function POST (req: Request)  {
     try {
         const {title, description} = await req.json();
         await main();

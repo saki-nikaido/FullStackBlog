@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client";
 
 
 const prisma = new PrismaClient
-export async function GET (req: Request, res: NextResponse){
+export async function GET (req: Request){
     try {
         const id: number = parseInt (req.url.split("/blog/")[1]);//urlパースして取得したほうがいい？
         await main();
@@ -21,7 +21,7 @@ export async function GET (req: Request, res: NextResponse){
       }
 };
 
-export async function PUT (req: Request, res: NextResponse){
+export async function PUT (req: Request){
     try {
 
         const {title, description} = await req.json();
@@ -40,7 +40,7 @@ export async function PUT (req: Request, res: NextResponse){
         await prisma.$disconnect();
       }
 };
-export async function DELETE (req: Request, res: NextResponse){
+export async function DELETE (req: Request){
     try {
 
         const id: number = parseInt (req.url.split("/blog/")[1]);//urlパースして取得したほうがいい？
