@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 import {  useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
-interface UpdateBlogParams {
+interface UpdateBlogProps {
     title:string;
     description: string;
     id: number
 };
 
-const editBlog = async ({title, description, id}:UpdateBlogParams ) => {
+const editBlog = async ({title, description, id}:UpdateBlogProps ) => {
     try{
         const res = await fetch(`http://localhost:3000/api/blog/${id}`, {
             method: "PUT",
